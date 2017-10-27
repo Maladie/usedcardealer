@@ -32,16 +32,25 @@ public class CarController {
         this.carRepository = carRepository;
         this.carService = carService;
     }
+
     @RequestMapping(value = "/getAllCars", method = RequestMethod.GET)
     public List<Car> getAllCars() {
         List<Car> carsList = carRepository.findAll();
         return carsList;
     }
+
     @RequestMapping(value = "/getCarsByCompany", method = RequestMethod.GET)
     public List<Car> getCarsByCompany(@RequestParam(value = "companyName") String companyName) {
         List<Car> carsList2 = carRepository.findByCompany(companyName);
         return carsList2;
-}
+    }
+
+    @RequestMapping(value = "/getCarsByDealer", method = RequestMethod.GET)
+    public List<Car> getCarsByDealer(@RequestParam String dealerName) {
+        List<Car> carsByDealer = carRepository.findByDealer(dealerName);
+        return carsByDealer;
+    }
+
     @RequestMapping(value = "/addCar", method = RequestMethod.POST)
     public ResponseEntity<Car> addCar(@RequestBody @Valid AddCarRequest newCar, BindingResult result) {
         Car car = carService.addCar(newCar);
