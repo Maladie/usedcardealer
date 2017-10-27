@@ -1,8 +1,11 @@
 package com.usedcardealer.view;
 
 
+import com.usedcardealer.model.Car;
+
 public class AddCarRequest {
 
+    private Integer id;
     private String company;
     private String model;
     private Integer engineSize;
@@ -10,7 +13,12 @@ public class AddCarRequest {
     private boolean isReserved;
     private Integer dealerId;
 
-    AddCarRequest() {
+    AddCarRequest (){
+
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getCompany() {
@@ -36,5 +44,4 @@ public class AddCarRequest {
     public Integer getDealerId() {
         return dealerId;
     }
-
 }
