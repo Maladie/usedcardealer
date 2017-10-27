@@ -13,14 +13,8 @@ public class AddCarRequest {
     private boolean isReserved;
     private Integer dealerId;
 
-    public AddCarRequest(AddCarRequest newCar) {
-        this.id = newCar.getId();
-        this.company = newCar.getCompany();
-        this.model = newCar.getModel();
-        this.engineSize = newCar.getEngineSize();
-        this.type = newCar.getType();
-        this.isReserved = newCar.isReserved();
-        this.dealerId = newCar.getDealerId();
+    AddCarRequest (){
+
     }
 
     public Integer getId() {

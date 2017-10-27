@@ -27,6 +27,12 @@ public class CarController {
         this.carService = carService;
     }
 
+    @RequestMapping(value = "/getCarsByDealer", method = RequestMethod.GET)
+    public List<Car> getCarsByDealer(@RequestParam String dealerName) {
+        List<Car> carsByDealer = carRepository.findByDealer(dealerName);
+        return carsByDealer;
+    }
+
     @RequestMapping(value = "/getallcars", method = RequestMethod.GET)
     public List<Car> getAllCars() {
         List<Car> carsList = carRepository.findAll();
