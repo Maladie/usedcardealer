@@ -9,12 +9,16 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 @Repository
+@Transactional
 public class DealerDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    @Transactional
     public void saveDaeler(Dealer dealer){
         entityManager.persist(dealer);
+    }
+
+    public void updateDealer(Dealer dealer){
+        entityManager.merge(dealer);
     }
 }
