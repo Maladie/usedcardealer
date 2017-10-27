@@ -35,9 +35,9 @@ public class CarController {
     }
 
     @RequestMapping(value = "/addCar", method = RequestMethod.POST)
-    public ResponseEntity<Car> addCar(@RequestBody @Valid AddCarRequest newCar, BindingResult result) {
-        Car car = carService.addCar(newCar);
-        return new ResponseEntity<>(car, HttpStatus.CREATED);
+    public ResponseEntity<AddCarRequest> addCar(@RequestBody @Valid AddCarRequest newCar, BindingResult result) {
+        AddCarRequest addedCar = carService.addCar(newCar);
+        return new ResponseEntity<>(addedCar, HttpStatus.CREATED);
     }
 
 
