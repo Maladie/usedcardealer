@@ -1,6 +1,7 @@
 package com.usedcardealer.dao;
 
 
+import com.usedcardealer.model.Dealer;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -11,4 +12,9 @@ import javax.transaction.Transactional;
 public class DealerDao {
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Transactional
+    public void saveDaeler(Dealer dealer){
+        entityManager.persist(dealer);
+    }
 }
