@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.management.DescriptorRead;
 import javax.validation.Valid;
 
-@RestController(value = "/dealer")
+@RestController
 public class DealerController {
 
     private DealerService dealerService;
@@ -24,7 +24,7 @@ public class DealerController {
         this.dealerService = dealerService;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/add")
+    @RequestMapping(method = RequestMethod.POST, value = "/addDealer")
     public ResponseEntity<Dealer> addDealer(@RequestBody @Valid AddDealer dealer, BindingResult result){
         Dealer addedDealer = dealerService.addDealer(dealer);
         return new ResponseEntity<>(addedDealer,HttpStatus.CREATED);
