@@ -17,4 +17,36 @@ public class Dealer {
     private Address address;
     @OneToMany
     private Set<Car> carStock;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Set<Car> getCarStock() {
+        return carStock;
+    }
+
+    public void setCarStock(Set<Car> carStock) {
+        this.carStock = carStock;
+    }
 }
