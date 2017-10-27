@@ -24,7 +24,7 @@ public class CarService {
         this.dealerRepository = dealerRepository;
     }
 
-    public Car addCar(AddCarRequest newCar) {
+    public AddCarRequest addCar(AddCarRequest newCar) {
         Dealer dealer = dealerRepository.findOne(newCar.getDealerId());
         Car car = new Car();
         car.setCompany(newCar.getCompany());
@@ -36,6 +36,6 @@ public class CarService {
         dealer.getCarStock().add(car);
         carDao.saveCar(car);
         dealerDao.updateDealer(dealer);
-        return car;
+        return newCar;
     }
 }

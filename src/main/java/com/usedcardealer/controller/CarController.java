@@ -33,6 +33,7 @@ public class CarController {
         this.carRepository = carRepository;
         this.carService = carService;
     }
+
     @RequestMapping(value = "/getAllCars", method = RequestMethod.GET)
     public List<Car> getAllCars() {
         List<Car> carsList = carRepository.findAll();
@@ -44,9 +45,9 @@ public class CarController {
         return carsList2;
 }
     @RequestMapping(value = "/addCar", method = RequestMethod.POST)
-    public ResponseEntity<Car> addCar(@RequestBody @Valid AddCarRequest newCar, BindingResult result) {
-        Car car = carService.addCar(newCar);
-        return new ResponseEntity<>(car, HttpStatus.CREATED);
+    public ResponseEntity<AddCarRequest> addCar(@RequestBody @Valid AddCarRequest newCar, BindingResult result) {
+        AddCarRequest addedCar = carService.addCar(newCar);
+        return new ResponseEntity<>(addedCar, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "getCarsByCompanyAndModel", method = RequestMethod.GET)
