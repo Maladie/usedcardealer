@@ -5,6 +5,7 @@ import com.usedcardealer.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,10 +21,16 @@ public class CarController {
     }
 
 
-    @RequestMapping(value = "/getallcars", method = RequestMethod.GET)
+    @RequestMapping(value = "/getAllCars", method = RequestMethod.GET)
 
     public List<Car> getAllCars() {
         List<Car> carsList = carRepository.findAll();
         return carsList;
     }
+    @RequestMapping(value = "/getCarsByCompany", method = RequestMethod.GET)
+
+    public List<Car> getCarsByCompany(@RequestParam(value = "companyName") String companyName) {
+
+        return carRepository. ;}
+
 }
