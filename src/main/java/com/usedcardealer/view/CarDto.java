@@ -1,4 +1,4 @@
 package com.usedcardealer.view;
 
-public class CatDto {
+public class CarDto {
 }
