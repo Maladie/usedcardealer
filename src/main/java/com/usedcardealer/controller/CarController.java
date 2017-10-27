@@ -27,7 +27,7 @@ public class CarController {
         this.carService = carService;
     }
 
-    @RequestMapping(value = "/getallcars", method = RequestMethod.GET)
+    @RequestMapping(value = "/getAllCars", method = RequestMethod.GET)
     public List<Car> getAllCars() {
         List<Car> carsList = carRepository.findAll();
         return carsList;
