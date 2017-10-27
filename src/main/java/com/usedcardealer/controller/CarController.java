@@ -40,6 +40,12 @@ public class CarController {
     public List<Car> getCarsByCompany(@RequestParam(value = "companyName") String companyName) {
         List<Car> carsList2 = carRepository.findByCompany(companyName);
         return carsList2;
+    }
 
+    @RequestMapping(value = "getCarsByCompanyAndModel", method = RequestMethod.GET)
+    public List<Car> getCarsByCompanyAndModel(@RequestParam(value = "companyName") String companyName,
+                                              @RequestParam(value = "modelName") String modelName) {
+        List<Car> carsList3 = carRepository.findByCompanyAndModel(companyName, modelName);
+        return carsList3;
     }
 }
