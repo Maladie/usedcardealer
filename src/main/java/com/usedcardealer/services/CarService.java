@@ -35,7 +35,7 @@ public class CarService {
         car.setDealer(dealer);
         dealer.getCarStock().add(car);
         carDao.saveCar(car);
-        dealerDao.update(dealer);
+        dealerDao.updateDealer(dealer);
         return car;
     }
 }
