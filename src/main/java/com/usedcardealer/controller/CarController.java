@@ -74,4 +74,8 @@ public class CarController {
         return false;
     }
 
+    @RequestMapping(value = "/getCarById/{id}", method = RequestMethod.GET)
+    public Car getCarById(@PathVariable(value = "id") Integer id) {
+        return carRepository.findById(id);
+    }
 }
