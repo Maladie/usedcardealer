@@ -78,4 +78,9 @@ public class CarController {
     public Car getCarById(@PathVariable(value = "id") Integer id) {
         return carRepository.findOne(id);
     }
+    @RequestMapping(value = "/getCarById/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Car> reserveCar(@RequestParam("id")Integer id){
+        carService.reserveCar(id);
+        return new ResponseEntity<Car>(HttpStatus.OK);
+    }
 }
