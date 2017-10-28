@@ -18,4 +18,7 @@ public class CarDao {
         entityManager.persist(car);
     }
 
+    public void updateCar(Car car) {
+        entityManager.merge(car);
+    }
 }

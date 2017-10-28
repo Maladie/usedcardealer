@@ -16,12 +16,14 @@ public class CarService {
     private CarDao carDao;
     private DealerDao dealerDao;
     private DealerRepository dealerRepository;
+    private CarRepository carRepository;
 
     @Autowired
-    public CarService(CarDao carDao, DealerDao dealerDao, DealerRepository dealerRepository) {
+    public CarService(CarDao carDao, DealerDao dealerDao, DealerRepository dealerRepository, CarRepository carRepository) {
         this.carDao = carDao;
         this.dealerDao = dealerDao;
         this.dealerRepository = dealerRepository;
+        this.carRepository = carRepository;
     }
 
     public AddCarRequest addCar(AddCarRequest newCar) {
@@ -40,4 +42,11 @@ public class CarService {
     }
 
 
+    public void reserveCar(Integer id) {
+        Car car = carRepository.findOne(id);
+        if(car != null){
+            car.setReserved(true);
+            carDao.updateCar(car);
+        }
+    }
 }
