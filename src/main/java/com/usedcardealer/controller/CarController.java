@@ -8,14 +8,15 @@ import com.usedcardealer.services.CarService;
 import com.usedcardealer.view.AddCarRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -34,9 +35,9 @@ public class CarController {
     }
 
     @RequestMapping(value = "/getAllCars", method = RequestMethod.GET)
-    public List<Car> getAllCars() {
+    public ResponseEntity<List<Car>> getAllCars() {
         List<Car> carsList = carRepository.findAll();
-        return carsList;
+        return new ResponseEntity<List<Car>>(carsList,HttpStatus.OK);
     }
 
     @RequestMapping(value = "/getCarsByCompany", method = RequestMethod.GET)
@@ -57,10 +58,19 @@ public class CarController {
         return new ResponseEntity<>(addedCar, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "getCarsByCompanyAndModel", method = RequestMethod.GET)
+    @RequestMapping(value = "/getCarsByCompanyAndModel", method = RequestMethod.GET)
     public List<Car> getCarsByCompanyAndModel(@RequestParam(value = "companyName") String companyName,
                                               @RequestParam(value = "modelName") String modelName) {
         List<Car> carsList3 = carRepository.findByCompanyAndModel(companyName, modelName);
         return carsList3;
     }
+    @RequestMapping(value = "/getCar/{id}", method = RequestMethod.GET)
+    public boolean checkCarAvailability(@PathVariable(value = "id") Integer id) {
+        Car car = carRepository.findByIdAndIsReserved(id, false);
+        if(car != null) {
+            return true;
+        }
+        return false;
+    }
+
 }

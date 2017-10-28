@@ -1,5 +1,7 @@
 package com.usedcardealer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
@@ -9,13 +11,15 @@ public class Dealer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "dealer_id")
     private Integer id;
     @NotNull
     private String name;
     @NotNull
     @Embedded
     private Address address;
-    @OneToMany
+    @JsonIgnore
+    @OneToMany(mappedBy = "dealer")
     private Set<Car> carStock;
 
     public Integer getId() {

@@ -1,11 +1,27 @@
 package com.usedcardealer.view;
 
 public class DealerDto {
-    private Integer id;
-    public DealerDto(Integer id){
-        this.id = id;
+
+    private String dealerName;
+    private String street;
+    private String city;
+    private String country;
+
+    DealerDto() {}
+
+    public String getDealerName() {
+        return dealerName;
     }
-    public Integer getId(){
-        return id;
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getCountry() {
+        return country;
     }
 }
