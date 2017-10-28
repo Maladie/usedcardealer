@@ -1,5 +1,7 @@
 package com.usedcardealer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -19,7 +21,9 @@ public class Car {
     private String type;
     @NotNull
     private boolean isReserved;
+
     @ManyToOne
+    @JoinColumn(name = "dealer_id", nullable = false)
     private Dealer dealer;
 
     public Integer getId() {
